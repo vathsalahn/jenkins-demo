@@ -116,15 +116,7 @@ pipeline {
 
 
 
-              },
-
-	    "Cobertura Report" : {
-
-		echo "Cobertura Report generation"
-
-                sh "cd MavenProject ; mvn cobertura:cobertura ; pwd"
-
-	      }
+              }
 
          )
 
