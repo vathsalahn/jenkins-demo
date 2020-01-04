@@ -79,7 +79,7 @@ pipeline {
 
                 echo "publishing the html report"
 
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/home/ubuntu/jenkins-demo/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
 
             }
 
