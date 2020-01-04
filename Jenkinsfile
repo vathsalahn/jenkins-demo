@@ -105,7 +105,7 @@ pipeline {
          )
 
             }
-
+	}
 	stage('clean up') {
 
             steps {
