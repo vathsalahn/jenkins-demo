@@ -96,8 +96,6 @@ pipeline {
 
             {
 
-                git 'https://github.com/smaji512/jenkins-demo.git'
-
                 sh "cd javancss-master ; mvn test javancss:report ; pwd"
 
                   
@@ -107,8 +105,6 @@ pipeline {
             "FindBugs Report" : {
 
                 sh "mkdir javancss1 ; cd javancss1 ;pwd"
-
-                git 'https://github.com/smaji512/jenkins-demo.git'
 
                 sh "cd javancss-master ; mvn findbugs:findbugs ; pwd"
 
