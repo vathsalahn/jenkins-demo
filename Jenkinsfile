@@ -76,17 +76,6 @@ pipeline {
 
         }
 
-        stage('clean up') {
-
-            steps {
-
-                echo "cleaning up the workspace"
-
-                cleanWs()
-
-            }
-
-        }
 
         stage("Metrics"){
 
@@ -116,6 +105,18 @@ pipeline {
          )
 
             }
+
+	stage('clean up') {
+
+            steps {
+
+                echo "cleaning up the workspace"
+
+                cleanWs()
+
+            }
+
+        }
 
          post{
 
