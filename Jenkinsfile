@@ -96,7 +96,7 @@ pipeline {
 
                 sh "cd javancss-master ; mvn findbugs:findbugs ; pwd"
 
-                deleteDir()
+              
 
 
 
