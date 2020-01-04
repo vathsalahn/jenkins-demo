@@ -1,6 +1,15 @@
 pipeline {
 
-    agent any 
+    agent any
+    parameters {
+
+		string(name: 'email',
+
+		defaultValue: 'subrath.maji@gmail',
+
+		description: 'recieptient email')
+
+	} 
 
     stages {
 
@@ -118,7 +127,7 @@ pipeline {
 
                 success {
 
-                    emailext body: 'Successfully completed pipeline project with archiving the artifacts', subject: 'Pipeline was successfull', to: $email
+                    emailext body: 'Successfully completed pipeline project with archiving the artifacts', subject: 'Pipeline was successfull', to: ${params.email}
 
                 }
 
