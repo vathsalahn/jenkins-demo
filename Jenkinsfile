@@ -76,37 +76,57 @@ pipeline {
 
         }
 
+        
 
         stage("Metrics"){
 
             steps{
 
-            parallel ( 
-		"JavaNcss Report":   
-            {
-                sh "cd javancss-master ; mvn test javancss:report ; pwd"
-               
-            },
+            parallel ( "JavaNcss Report": {
 
-            "FindBugs Report" : 
-	    {
+                sh "cd javancss-master ; mvn test javancss:report ; pwd"
+
+                  
+
+				},
+
+            "FindBugs Report" : {
+
                 sh "mkdir javancss1 ; cd javancss1 ;pwd"
 
                 sh "cd javancss-master ; mvn findbugs:findbugs ; pwd"
 
                 deleteDir()
-             },
-	     
-	     "Cobertura Report" :
-	     {
-		sh "cd MavenProject ; mvn cobertura:cobertura ; pwd"
-	     }
+
+
+
+				},
+
+			"Cobertura Report" : {
+
+				echo "Cobertura Report generation"
+
+                sh "cd MavenProject ; mvn cobertura:cobertura ; pwd"
+
+				}
 
          )
 
             }
-	}
-	stage('clean up') {
+
+         post{
+
+                success {
+
+                    emailext body: 'Successfully completed pipeline project with archiving the artifacts', subject: 'Pipeline was successfull', to: 'subrath.maji@gmail.com'
+
+                }
+
+			}
+
+		}
+
+		stage('clean up') {
 
             steps {
 
@@ -117,18 +137,6 @@ pipeline {
             }
 
         }
-
-         post{
-
-                success {
-
-                    emailext body: 'Successfully completed pipeline project with archiving the artifacts', subject: 'Pipeline was successfull', to: 'subrath.maji@gmail.com'
-
-                }
-
-    }
-
-}
 
         
 
