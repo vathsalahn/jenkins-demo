@@ -118,7 +118,7 @@ pipeline {
 
                 success {
 
-                    emailext body: 'Successfully completed pipeline project with archiving the artifacts', subject: 'Pipeline was successfull', to: 'subrath.maji@gmail.com'
+                    emailext body: 'Successfully completed pipeline project with archiving the artifacts', subject: 'Pipeline was successfull', to: $email
 
                 }
 
